@@ -35,7 +35,7 @@ export function PatientDashboard() {
   if (notFound) {
     return (
       <PageTransition>
-        <Card glow className="max-w-lg mx-auto mt-12">
+        <Card glow className="w-full">
           <CardHeader><CardTitle>Complete Your Patient Profile</CardTitle></CardHeader>
           <CardContent>
             <p className="text-ice-muted mb-4">Set up your profile and transfusion plan to begin coordination.</p>

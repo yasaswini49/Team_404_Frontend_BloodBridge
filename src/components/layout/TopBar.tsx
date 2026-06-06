@@ -8,6 +8,7 @@ const TITLES: Record<string, string> = {
   '/dashboard': 'Dashboard',
   '/verify': 'HPLC Verifications',
   '/bridges': 'Bridge Assignment',
+  '/bridge-management': 'Bridge Management',
   '/requests': 'Transfusion Requests',
   '/profile': 'Profile',
   '/eligibility': 'Eligibility Screening',

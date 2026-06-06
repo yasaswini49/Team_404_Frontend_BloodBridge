@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   LayoutDashboard, ShieldCheck, GitBranch, ClipboardList, User, HeartPulse,
-  Calendar, MessageSquare, ChevronLeft, Menu, Heart,
+  Calendar, MessageSquare, ChevronLeft, Menu, Heart, Users,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BloodDrop } from '@/components/BloodDrop'
@@ -22,6 +22,7 @@ const NAV: Record<UserRole, NavItem[]> = {
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { path: '/verify', label: 'Verifications', icon: ShieldCheck },
     { path: '/bridges', label: 'Bridge Assign', icon: GitBranch },
+    { path: '/bridge-management', label: 'Bridge Manage', icon: Users },
     { path: '/requests', label: 'All Requests', icon: ClipboardList },
     { path: '/chatbot', label: 'AI Assistant', icon: MessageSquare },
   ],
@@ -35,6 +36,7 @@ const NAV: Record<UserRole, NavItem[]> = {
   patient: [
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { path: '/profile', label: 'My Profile', icon: User },
+    { path: '/plan', label: 'Transfusion Plan', icon: Calendar },
     { path: '/requests', label: 'My Requests', icon: ClipboardList },
     { path: '/bridge', label: 'My Bridge', icon: GitBranch },
     { path: '/chatbot', label: 'AI Assistant', icon: MessageSquare },

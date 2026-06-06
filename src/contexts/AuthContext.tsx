@@ -18,6 +18,8 @@ interface RegisterData {
   phone: string
   password: string
   role: UserRole
+  latitude?: number
+  longitude?: number
 }
 
 interface LoginResponse {

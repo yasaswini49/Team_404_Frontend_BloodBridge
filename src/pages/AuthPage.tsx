@@ -1,52 +1,70 @@
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowRight, UserPlus } from 'lucide-react'
-import { useAuth } from '@/contexts/AuthContext'
-import { useToast } from '@/contexts/ToastContext'
-import { BloodDrop } from '@/components/BloodDrop'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Card, CardContent } from '@/components/ui/card'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { getDefaultRoute } from '@/lib/auth'
-import type { UserRole } from '@/types'
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight, UserPlus } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/contexts/ToastContext";
+import { BloodDrop } from "@/components/BloodDrop";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { getDefaultRoute } from "@/lib/auth";
+import { tryGetLocation } from "@/lib/geolocation";
+import type { UserRole } from "@/types";
 
-export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
-  const isLogin = mode === 'login'
-  const { login, register } = useAuth()
-  const { addToast } = useToast()
-  const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+export function AuthPage({ mode }: { mode: "login" | "register" }) {
+  const isLogin = mode === "login";
+  const { login, register } = useAuth();
+  const { addToast } = useToast();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
-    full_name: '',
-    email: '',
-    phone: '',
-    password: '',
-    role: 'donor' as UserRole,
-  })
+    full_name: "",
+    email: "",
+    phone: "",
+    password: "",
+    role: "donor" as UserRole,
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
     try {
       if (isLogin) {
-        await login(form.email, form.password)
+        await login(form.email, form.password);
       } else {
-        await register(form)
-        addToast('Welcome to BloodBridge', 'success')
+        const coords = await tryGetLocation();
+        await register({
+          ...form,
+          ...(coords
+            ? { latitude: coords.latitude, longitude: coords.longitude }
+            : {}),
+        });
+        addToast(
+          coords
+            ? "Welcome to BloodBridge — location saved"
+            : "Welcome to BloodBridge",
+          "success",
+        );
       }
-      const auth = JSON.parse(localStorage.getItem('bb_auth')!)
-      navigate(getDefaultRoute(auth.role))
+      const auth = JSON.parse(localStorage.getItem("bb_auth")!);
+      navigate(getDefaultRoute(auth.role));
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Authentication failed')
+      setError(err instanceof Error ? err.message : "Authentication failed");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen care-grid flex items-center justify-center p-6 relative overflow-hidden">
@@ -69,7 +87,9 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
           >
             <BloodDrop size={56} animate />
           </motion.div>
-          <h1 className="font-display text-5xl font-normal text-ice tracking-tight">BloodBridge</h1>
+          <h1 className="font-display text-5xl font-normal text-ice tracking-tight">
+            BloodBridge
+          </h1>
           <p className="font-body text-sm text-ice-muted mt-2">
             A caring bridge between donors and heroes
           </p>
@@ -79,12 +99,22 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
           <CardContent className="p-6 pt-6">
             <div className="flex gap-1 mb-6 p-1 rounded-xl bg-bg-surface border border-border-dim">
               <Link to="/login" className="flex-1">
-                <Button variant={isLogin ? 'primary' : 'ghost'} size="sm" className="w-full" type="button">
+                <Button
+                  variant={isLogin ? "primary" : "ghost"}
+                  size="sm"
+                  className="w-full"
+                  type="button"
+                >
                   Sign In
                 </Button>
               </Link>
               <Link to="/register" className="flex-1">
-                <Button variant={!isLogin ? 'primary' : 'ghost'} size="sm" className="w-full" type="button">
+                <Button
+                  variant={!isLogin ? "primary" : "ghost"}
+                  size="sm"
+                  className="w-full"
+                  type="button"
+                >
                   <UserPlus size={14} /> Register
                 </Button>
               </Link>
@@ -98,7 +128,9 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
                     <Input
                       id="name"
                       value={form.full_name}
-                      onChange={(e) => setForm({ ...form, full_name: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, full_name: e.target.value })
+                      }
                       required
                       placeholder="Priya Sharma"
                     />
@@ -108,19 +140,33 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
                     <Input
                       id="phone"
                       value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, phone: e.target.value })
+                      }
                       required
                       placeholder="+91 98765 43210"
                     />
                   </div>
                   <div className="space-y-1.5">
                     <Label>Role</Label>
-                    <Select value={form.role} onValueChange={(v) => setForm({ ...form, role: v as UserRole })}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
+                    <Select
+                      value={form.role}
+                      onValueChange={(v) =>
+                        setForm({ ...form, role: v as UserRole })
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="donor">Blood Donor</SelectItem>
-                        <SelectItem value="patient">Thalassemia Patient</SelectItem>
-                        <SelectItem value="hospital_coordinator">Hospital Coordinator</SelectItem>
+                        <SelectItem value="patient">
+                          Thalassemia Patient
+                        </SelectItem>
+                        <SelectItem value="hospital_coordinator">
+                          Hospital Coordinator
+                        </SelectItem>
+                        <SelectItem value="admin">Admin</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -143,7 +189,9 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
                   id="password"
                   type="password"
                   value={form.password}
-                  onChange={(e) => setForm({ ...form, password: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, password: e.target.value })
+                  }
                   required
                   minLength={6}
                 />
@@ -155,8 +203,21 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
                 </p>
               )}
 
-              <Button type="submit" size="lg" className="w-full mt-2" disabled={loading}>
-                {loading ? 'Please wait…' : isLogin ? <>Sign In <ArrowRight size={14} /></> : 'Create Account'}
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full mt-2"
+                disabled={loading}
+              >
+                {loading ? (
+                  "Please wait…"
+                ) : isLogin ? (
+                  <>
+                    Sign In <ArrowRight size={14} />
+                  </>
+                ) : (
+                  "Create Account"
+                )}
               </Button>
             </form>
           </CardContent>
@@ -167,5 +228,5 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
         </p>
       </motion.div>
     </div>
-  )
+  );
 }

@@ -6,6 +6,7 @@ import { AuthPage } from '@/pages/AuthPage'
 import { AdminDashboard } from '@/pages/admin/AdminDashboard'
 import { VerifyPage } from '@/pages/admin/VerifyPage'
 import { BridgePage } from '@/pages/admin/BridgePage'
+import { BridgeManagementPage } from '@/pages/admin/BridgeManagementPage'
 import { AdminRequestsPage, PatientRequestsPage } from '@/pages/admin/RequestsPage'
 import { DonorDashboard } from '@/pages/donor/DonorDashboard'
 import { DonorProfilePage } from '@/pages/donor/DonorProfilePage'
@@ -13,6 +14,7 @@ import { EligibilityPage } from '@/pages/donor/EligibilityPage'
 import { SchedulePage } from '@/pages/donor/SchedulePage'
 import { PatientDashboard } from '@/pages/patient/PatientDashboard'
 import { PatientProfilePage } from '@/pages/patient/PatientProfilePage'
+import { PatientPlanPage } from '@/pages/patient/PatientPlanPage'
 import { BridgeInfoPage } from '@/pages/patient/BridgeInfoPage'
 import { AppointmentsPage } from '@/pages/hospital/AppointmentsPage'
 import { ChatbotPage } from '@/pages/ChatbotPage'
@@ -62,8 +64,10 @@ function AppRoutes() {
         <Route path="/dashboard" element={<DashboardRouter />} />
         <Route path="/verify" element={<ProtectedRoute roles={['admin']}><VerifyPage /></ProtectedRoute>} />
         <Route path="/bridges" element={<ProtectedRoute roles={['admin']}><BridgePage /></ProtectedRoute>} />
+        <Route path="/bridge-management" element={<ProtectedRoute roles={['admin']}><BridgeManagementPage /></ProtectedRoute>} />
         <Route path="/requests" element={<RequestsRouter />} />
         <Route path="/profile" element={<ProfileRouter />} />
+        <Route path="/plan" element={<ProtectedRoute roles={['patient']}><PatientPlanPage /></ProtectedRoute>} />
         <Route path="/eligibility" element={<ProtectedRoute roles={['donor']}><EligibilityPage /></ProtectedRoute>} />
         <Route path="/schedule" element={<ProtectedRoute roles={['donor']}><SchedulePage /></ProtectedRoute>} />
         <Route path="/bridge" element={<ProtectedRoute roles={['patient']}><BridgeInfoPage /></ProtectedRoute>} />

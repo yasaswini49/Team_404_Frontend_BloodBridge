@@ -22,8 +22,13 @@ export interface DonorProfile {
   blood_type: string
   age: number
   weight: number
+  gender?: string | null
   city: string
   state: string
+  pincode?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  hospital_id?: string | null
   hplc_doc_url: string | null
   hplc_unique_id: string
   is_admin_verified: boolean
@@ -31,7 +36,21 @@ export interface DonorProfile {
   availability: boolean
   total_donations: number
   last_donated_at: string | null
+  notes?: string | null
   created_at?: string
+}
+
+export interface Hospital {
+  id: string
+  name: string
+  address: string
+  city: string
+  state: string
+  pincode?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  phone?: string | null
+  email?: string | null
 }
 
 export interface PatientProfile {
@@ -39,13 +58,22 @@ export interface PatientProfile {
   user_id: string
   blood_type: string | null
   age: number
+  gender?: string | null
   city: string
   state: string
+  pincode?: string | null
+  hospital_id?: string | null
+  latitude?: number | null
+  longitude?: number | null
   hplc_doc_url: string | null
   hplc_unique_id: string
   is_admin_verified: boolean
+  thalassemia_type?: string | null
   transfusion_interval_days: number
   next_transfusion_date: string | null
+  guardian_name?: string | null
+  guardian_phone?: string | null
+  notes?: string | null
   current_bridge_id: string | null
   created_at?: string
 }
@@ -103,9 +131,12 @@ export interface EligibilityResult {
 export interface DonorFindResult {
   id: string
   city: string
+  state?: string
   total_donations: number
   availability_prediction?: string
   confidence?: number
+  distance_km?: number | null
+  combined_score?: number | null
 }
 
 export const ELIGIBILITY_QUESTIONS = [

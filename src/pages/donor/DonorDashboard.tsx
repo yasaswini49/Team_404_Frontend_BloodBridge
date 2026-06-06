@@ -26,7 +26,7 @@ export function DonorDashboard() {
   if (notFound) {
     return (
       <PageTransition>
-        <Card glow className="max-w-lg mx-auto mt-12">
+        <Card glow className="w-full">
           <CardHeader>
             <CardTitle>Complete Your Donor Profile</CardTitle>
           </CardHeader>
