@@ -7,6 +7,7 @@ import { AdminDashboard } from '@/pages/admin/AdminDashboard'
 import { VerifyPage } from '@/pages/admin/VerifyPage'
 import { BridgePage } from '@/pages/admin/BridgePage'
 import { BridgeManagementPage } from '@/pages/admin/BridgeManagementPage'
+import { PriorityRequestsPage } from '@/pages/admin/PriorityRequestsPage'
 import { AdminRequestsPage, PatientRequestsPage } from '@/pages/admin/RequestsPage'
 import { DonorDashboard } from '@/pages/donor/DonorDashboard'
 import { DonorProfilePage } from '@/pages/donor/DonorProfilePage'
@@ -65,6 +66,7 @@ function AppRoutes() {
         <Route path="/verify" element={<ProtectedRoute roles={['admin']}><VerifyPage /></ProtectedRoute>} />
         <Route path="/bridges" element={<ProtectedRoute roles={['admin']}><BridgePage /></ProtectedRoute>} />
         <Route path="/bridge-management" element={<ProtectedRoute roles={['admin']}><BridgeManagementPage /></ProtectedRoute>} />
+        <Route path="/priority-requests" element={<ProtectedRoute roles={['admin']}><PriorityRequestsPage /></ProtectedRoute>} />
         <Route path="/requests" element={<RequestsRouter />} />
         <Route path="/profile" element={<ProfileRouter />} />
         <Route path="/plan" element={<ProtectedRoute roles={['patient']}><PatientPlanPage /></ProtectedRoute>} />

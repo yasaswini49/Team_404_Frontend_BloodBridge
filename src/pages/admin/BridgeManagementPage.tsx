@@ -510,6 +510,7 @@ export function BridgeManagementPage() {
                               </div>
                               <span className="text-ice-muted">
                                 {d.city}{d.state ? `, ${d.state}` : ""}
+                                {d.blood_type && <span className="ml-1 font-data text-blood-300">{d.blood_type}</span>}
                                 {d.distance_km != null && ` · ${d.distance_km} km`}
                                 {d.availability_prediction && (
                                   <span className={cn(
@@ -519,6 +520,16 @@ export function BridgeManagementPage() {
                                       : "bg-red-900/30 text-red-400"
                                   )}>
                                     {d.availability_prediction}
+                                  </span>
+                                )}
+                                {d.churn_risk && (
+                                  <span className={cn(
+                                    "ml-1 px-1 rounded text-[10px]",
+                                    d.churn_risk === "HIGH_RISK" ? "bg-red-900/30 text-red-400"
+                                    : d.churn_risk === "MEDIUM_RISK" ? "bg-yellow-900/30 text-yellow-400"
+                                    : "bg-green-900/30 text-green-400"
+                                  )}>
+                                    {d.churn_risk === "HIGH_RISK" ? "⚠ Churn Risk" : d.churn_risk === "MEDIUM_RISK" ? "~ Med Churn" : "✓ Stable"}
                                   </span>
                                 )}
                                 {d.confidence != null && (

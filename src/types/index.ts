@@ -132,9 +132,12 @@ export interface DonorFindResult {
   id: string
   city: string
   state?: string
+  blood_type?: string
   total_donations: number
   availability_prediction?: string
   confidence?: number
+  churn_risk?: string
+  churn_confidence?: number
   distance_km?: number | null
   combined_score?: number | null
 }
