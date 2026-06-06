@@ -76,7 +76,7 @@ export function PatientProfilePage() {
                   </Select>
                 </div>
               </div>
-              <div role="button" tabIndex={0} onClick={() => fileRef.current?.click()} className={cn('border-2 border-dashed rounded-xl p-6 text-center cursor-pointer', file ? 'border-blood-400/40' : 'border-border-med')}>
+              <div role="button" tabIndex={0} onClick={() => fileRef.current?.click()} className={cn('border-2 border-dashed rounded-xl p-6 text-center cursor-pointer', file ? 'border-blood-300/50 bg-blood-100/40' : 'border-border-med hover:border-blood-300/30')}>
                 <input ref={fileRef} type="file" className="hidden" accept=".pdf,.jpg,.png" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
                 {file ? <span className="flex items-center justify-center gap-2"><FileText size={18} />{file.name}</span> : <span className="text-ice-muted flex flex-col items-center"><Upload size={20} className="mb-1" />HPLC Document</span>}
               </div>

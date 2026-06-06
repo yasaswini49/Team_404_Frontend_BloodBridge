@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   LayoutDashboard, ShieldCheck, GitBranch, ClipboardList, User, HeartPulse,
-  Calendar, MessageSquare, ChevronLeft, Menu, Droplets,
+  Calendar, MessageSquare, ChevronLeft, Menu, Heart,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BloodDrop } from '@/components/BloodDrop'
@@ -56,14 +56,14 @@ export function Sidebar() {
     <motion.aside
       animate={{ width: collapsed ? 64 : 220 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      className="relative flex flex-col border-r border-border-dim bg-bg-deep shrink-0 overflow-hidden"
+      className="relative flex flex-col border-r border-border-dim bg-bg-panel/80 backdrop-blur-sm shrink-0 overflow-hidden shadow-sm"
     >
       <div className="flex items-center gap-3 px-4 py-5 border-b border-border-dim">
         <BloodDrop size={28} animate />
         {!collapsed && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <p className="font-display text-xl font-light leading-none">BloodBridge</p>
-            <p className="font-data text-[9px] uppercase tracking-widest text-ice-dim mt-0.5">Blood Warriors</p>
+            <p className="font-display text-xl font-normal leading-none text-ice">BloodBridge</p>
+            <p className="font-body text-xs text-ice-dim mt-0.5">Caring for every hero</p>
           </motion.div>
         )}
       </div>
@@ -76,15 +76,15 @@ export function Sidebar() {
             <NavLink key={item.path} to={item.path}>
               <div
                 className={cn(
-                  'flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all duration-200',
+                  'flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200',
                   active
-                    ? 'bg-blood-400/10 text-blood-200 border border-blood-400/20'
+                    ? 'bg-blood-100 text-blood-600 border border-blood-300/40 shadow-sm'
                     : 'text-ice-muted hover:text-ice hover:bg-bg-surface border border-transparent',
                 )}
               >
                 <Icon size={18} className="shrink-0" />
                 {!collapsed && (
-                  <span className="font-data text-[10px] uppercase tracking-wider truncate">{item.label}</span>
+                  <span className="font-body text-sm font-medium truncate">{item.label}</span>
                 )}
               </div>
             </NavLink>
@@ -106,8 +106,8 @@ export function Sidebar() {
       {!collapsed && (
         <div className="px-4 py-3 border-t border-border-dim">
           <div className="flex items-center gap-2 text-ice-dim">
-            <Droplets size={12} />
-            <span className="font-data text-[9px] uppercase">Every drop counts</span>
+            <Heart size={12} className="text-blood-400" />
+            <span className="font-body text-xs">Here when you need us</span>
           </div>
         </div>
       )}

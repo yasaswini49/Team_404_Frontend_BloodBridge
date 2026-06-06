@@ -93,12 +93,12 @@ export function DonorProfilePage() {
               onKeyDown={(e) => e.key === 'Enter' && fileRef.current?.click()}
               className={cn(
                 'border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors',
-                file ? 'border-blood-400/40 bg-blood-400/5' : 'border-border-med hover:border-border-lit',
+                file ? 'border-blood-300/50 bg-blood-100/60' : 'border-border-med hover:border-blood-300/40',
               )}
             >
               <input ref={fileRef} type="file" className="hidden" accept=".pdf,.jpg,.png" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
               {file ? (
-                <div className="flex items-center justify-center gap-2 text-blood-200"><FileText size={20} />{file.name}</div>
+                <div className="flex items-center justify-center gap-2 text-blood-600"><FileText size={20} />{file.name}</div>
               ) : (
                 <div className="text-ice-muted"><Upload size={24} className="mx-auto mb-2 opacity-50" /><p className="text-sm">Upload HPLC Document</p></div>
               )}

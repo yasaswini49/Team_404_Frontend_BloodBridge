@@ -43,14 +43,14 @@ export function BridgeInfoPage() {
               <p className="font-data text-xs text-ice-muted">Bridge ID: {profile.current_bridge_id}</p>
               <div className="grid grid-cols-2 gap-3 mt-4">
                 {[...Array(8)].map((_, i) => (
-                  <div key={i} className="rounded-lg bg-bg-surface border border-border-dim p-3 text-center">
-                    <p className="font-data text-[9px] text-ice-dim uppercase">Slot {i + 1}</p>
+                  <div key={i} className="rounded-xl bg-bg-surface border border-border-dim p-3 text-center">
+                    <p className="font-body text-xs text-ice-dim">Slot {i + 1}</p>
                     <p className="font-display text-lg text-ice mt-1">Bridge</p>
                   </div>
                 ))}
                 {[9, 10].map((n) => (
-                  <div key={n} className="rounded-lg bg-blood-900/30 border border-blood-400/20 p-3 text-center">
-                    <p className="font-data text-[9px] text-gold uppercase">Emergency {n - 8}</p>
+                  <div key={n} className="rounded-xl bg-blood-100 border border-blood-300/40 p-3 text-center">
+                    <p className="font-body text-xs text-gold font-medium">Emergency {n - 8}</p>
                     <p className="font-display text-lg text-gold mt-1">Backup</p>
                   </div>
                 ))}

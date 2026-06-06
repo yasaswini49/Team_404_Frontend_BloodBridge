@@ -79,9 +79,9 @@ export function ChatbotPage() {
             <div>
               <p className="font-display text-lg">BloodBridge AI</p>
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-blood" />
-                <span className="font-data text-[9px] uppercase text-emerald-400">Online</span>
-                {model && <span className="font-data text-[9px] text-ice-dim">· {model}</span>}
+                <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse-blood" />
+                <span className="font-body text-xs text-sage-500">Here to help</span>
+                {model && <span className="font-body text-xs text-ice-dim">· {model}</span>}
               </div>
             </div>
           </div>
@@ -100,8 +100,8 @@ export function ChatbotPage() {
                 <div className={cn(
                   'max-w-[80%] rounded-xl px-4 py-3 text-sm leading-relaxed',
                   m.role === 'user'
-                    ? 'bg-blood-400/15 border border-blood-400/25 text-ice rounded-br-sm'
-                    : 'bg-bg-surface border border-border-dim text-ice-muted rounded-bl-sm',
+                    ? 'bg-blood-100 border border-blood-300/40 text-ice rounded-br-md'
+                    : 'bg-bg-surface border border-border-dim text-ice-muted rounded-bl-md',
                 )}>
                   {m.role === 'assistant' && <Bot size={12} className="inline mr-1.5 text-blood-300 opacity-60" />}
                   {m.content}

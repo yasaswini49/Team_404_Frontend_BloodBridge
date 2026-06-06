@@ -83,12 +83,12 @@ export function EligibilityPage() {
         <AnimatePresence>
           {result && (
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <Card className={cn('p-6', result.passed ? 'border-emerald-500/30' : 'border-blood-400/30')}>
+              <Card className={cn('p-6', result.passed ? 'border-sage-400/40 bg-sage-100/40' : 'border-blood-300/50 bg-blood-100/30')}>
                 <div className="flex items-center gap-3 mb-4">
                   {result.passed ? (
-                    <><CheckCircle className="text-emerald-400" size={28} /><h3 className="font-display text-2xl text-emerald-300">You are Eligible!</h3></>
+                    <><CheckCircle className="text-sage-500" size={28} /><h3 className="font-display text-2xl text-sage-500">You are Eligible!</h3></>
                   ) : (
-                    <><XCircle className="text-blood-400" size={28} /><h3 className="font-display text-2xl text-blood-300">Not Eligible</h3></>
+                    <><XCircle className="text-blood-500" size={28} /><h3 className="font-display text-2xl text-blood-500">Not Eligible</h3></>
                   )}
                 </div>
                 {!result.passed && (

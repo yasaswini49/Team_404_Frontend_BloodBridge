@@ -25,19 +25,19 @@ export function TopBar() {
   const title = TITLES[location.pathname] ?? 'BloodBridge'
 
   return (
-    <header className="flex items-center justify-between border-b border-border-dim bg-bg-deep/80 backdrop-blur-md px-6 py-4 shrink-0">
+    <header className="flex items-center justify-between border-b border-border-dim bg-bg-panel/80 backdrop-blur-md px-6 py-4 shrink-0 shadow-sm">
       <div>
-        <h1 className="font-display text-3xl font-light tracking-tight text-ice">{title}</h1>
+        <h1 className="font-display text-3xl font-normal tracking-tight text-ice">{title}</h1>
         {auth && (
-          <p className="font-data text-[10px] uppercase tracking-widest text-ice-dim mt-0.5">
+          <p className="font-body text-sm text-ice-dim mt-0.5">
             {auth.full_name} · {role?.replace('_', ' ')}
           </p>
         )}
       </div>
       <div className="flex items-center gap-3">
-        <Badge variant="blood" className="hidden sm:inline-flex">
-          <span className="w-1.5 h-1.5 rounded-full bg-blood-400 animate-pulse-blood mr-1.5 inline-block" />
-          Live
+        <Badge variant="success" className="hidden sm:inline-flex">
+          <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse-blood mr-1.5 inline-block" />
+          Active
         </Badge>
         <Button variant="ghost" size="sm" aria-label="Notifications">
           <Bell size={16} />

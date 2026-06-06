@@ -26,9 +26,9 @@ const icons = {
 }
 
 const styles = {
-  success: 'border-emerald-500/30 bg-emerald-950/80 text-emerald-200',
-  error: 'border-blood-400/40 bg-blood-900/80 text-blood-100',
-  warn: 'border-gold/30 bg-[#1a1508]/90 text-gold',
+  success: 'border-sage-400/40 bg-sage-100 text-sage-500',
+  error: 'border-blood-300/50 bg-blood-100 text-blood-700',
+  warn: 'border-gold/40 bg-gold/10 text-gold',
 }
 
 export function ToastProvider({ children }: { children: ReactNode }) {
@@ -55,7 +55,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
                 className={cn(
-                  'pointer-events-auto flex items-center gap-3 rounded-lg border px-4 py-3 shadow-xl backdrop-blur-sm font-data text-xs min-w-[280px] max-w-md',
+                  'pointer-events-auto flex items-center gap-3 rounded-xl border px-4 py-3 shadow-lg font-body text-sm min-w-[280px] max-w-md',
                   styles[toast.type],
                 )}
               >

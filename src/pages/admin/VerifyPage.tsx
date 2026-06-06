@@ -33,11 +33,11 @@ function ProfileCard({
     <Card className="p-4">
       <div className="flex items-start justify-between gap-4">
         <div className="flex gap-3">
-          <div className="rounded-lg bg-bg-surface p-2.5 text-blood-300">
+          <div className="rounded-xl bg-blood-100 p-2.5 text-blood-500">
             {type === 'donor' ? <User size={18} /> : <Heart size={18} />}
           </div>
           <div>
-            <p className="font-data text-[10px] text-ice-dim uppercase">{type} · {id.slice(0, 8)}…</p>
+            <p className="font-body text-xs text-ice-dim capitalize">{type} · {id.slice(0, 8)}…</p>
             <div className="flex gap-2 mt-1 flex-wrap">
               {bloodType && <BloodTypeBadge type={bloodType} />}
               <VerifiedBadge verified={false} />

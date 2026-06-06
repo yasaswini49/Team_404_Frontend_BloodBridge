@@ -49,10 +49,10 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
   }
 
   return (
-    <div className="min-h-screen haem-grid flex items-center justify-center p-6 relative overflow-hidden">
-      <div className="absolute inset-0 haem-pattern opacity-30 pointer-events-none" />
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-blood-400/5 blur-3xl" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-gold/5 blur-3xl" />
+    <div className="min-h-screen care-grid flex items-center justify-center p-6 relative overflow-hidden">
+      <div className="absolute inset-0 care-pattern opacity-60 pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-blood-300/15 blur-3xl" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-sage-400/10 blur-3xl" />
 
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -69,15 +69,15 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
           >
             <BloodDrop size={56} animate />
           </motion.div>
-          <h1 className="font-display text-5xl font-light text-ice tracking-tight">BloodBridge</h1>
-          <p className="font-data text-[10px] uppercase tracking-[0.3em] text-ice-dim mt-2">
-            Blood Warriors Foundation
+          <h1 className="font-display text-5xl font-normal text-ice tracking-tight">BloodBridge</h1>
+          <p className="font-body text-sm text-ice-muted mt-2">
+            A caring bridge between donors and heroes
           </p>
         </div>
 
-        <Card glow className="backdrop-blur-sm bg-bg-panel/90">
+        <Card glow className="backdrop-blur-sm bg-bg-panel/95">
           <CardContent className="p-6 pt-6">
-            <div className="flex gap-1 mb-6 p-1 rounded-lg bg-bg-deep border border-border-dim">
+            <div className="flex gap-1 mb-6 p-1 rounded-xl bg-bg-surface border border-border-dim">
               <Link to="/login" className="flex-1">
                 <Button variant={isLogin ? 'primary' : 'ghost'} size="sm" className="w-full" type="button">
                   Sign In
@@ -150,7 +150,7 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
               </div>
 
               {error && (
-                <p className="text-sm text-blood-300 font-data text-[11px] border border-blood-400/30 rounded-md px-3 py-2 bg-blood-900/30">
+                <p className="text-sm text-blood-600 font-body border border-blood-300/50 rounded-xl px-3 py-2 bg-blood-100">
                   {error}
                 </p>
               )}
@@ -162,8 +162,8 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
           </CardContent>
         </Card>
 
-        <p className="text-center font-data text-[10px] text-ice-dim mt-6 uppercase tracking-wider">
-          500–700 transfusions · One bridge · Eight heroes
+        <p className="text-center font-body text-sm text-ice-dim mt-6">
+          Trusted care · One bridge · Eight heroes by your side
         </p>
       </motion.div>
     </div>

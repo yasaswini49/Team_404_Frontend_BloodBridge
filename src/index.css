@@ -1,45 +1,75 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-display: 'Cormorant Garamond', serif;
-  --font-data: 'IBM Plex Mono', monospace;
-  --font-body: 'Instrument Sans', sans-serif;
+  --font-display: 'Fraunces', serif;
+  --font-data: 'Nunito', sans-serif;
+  --font-body: 'Nunito', sans-serif;
 
-  --color-bg-void: #080a0d;
-  --color-bg-deep: #0d1117;
-  --color-bg-panel: #111820;
-  --color-bg-surface: #161f2a;
-  --color-bg-raised: #1a2535;
+  /* Warm, soft backgrounds */
+  --color-bg-void: #faf8f5;
+  --color-bg-deep: #f5f1eb;
+  --color-bg-panel: #ffffff;
+  --color-bg-surface: #f0ebe4;
+  --color-bg-raised: #e8e2d9;
 
-  --color-border-dim: #1e2d3d;
-  --color-border-med: #253545;
-  --color-border-lit: #2e4258;
+  /* Gentle borders */
+  --color-border-dim: #ebe4da;
+  --color-border-med: #dbd2c4;
+  --color-border-lit: #c9bfb0;
 
-  --color-blood-400: #d01829;
-  --color-blood-500: #b31420;
-  --color-ice: #e8f4ff;
-  --color-ice-muted: #9bb8d4;
-  --color-ice-dim: #4a6a84;
-  --color-gold: #c9975a;
+  /* Soft rose accent (caring, blood-inspired) */
+  --color-blood-100: #fdf2f4;
+  --color-blood-200: #f9d4dc;
+  --color-blood-300: #e895a8;
+  --color-blood-400: #d4647a;
+  --color-blood-500: #c04d68;
+  --color-blood-600: #a83d56;
+  --color-blood-700: #8f3349;
+  --color-blood-800: #6b2838;
+  --color-blood-900: #fdf2f4;
+
+  /* Warm ink text */
+  --color-ice: #3d3530;
+  --color-ice-muted: #6b6259;
+  --color-ice-dim: #9a9188;
+
+  /* Honey warmth */
+  --color-gold: #c9956a;
+
+  /* Sage trust accent */
+  --color-sage-400: #6b9e8f;
+  --color-sage-500: #5a8a7c;
+  --color-sage-100: #edf5f2;
 }
 
 :root {
-  --bg-void: #080a0d;
-  --bg-deep: #0d1117;
-  --bg-panel: #111820;
-  --bg-surface: #161f2a;
-  --bg-raised: #1a2535;
-  --border-dim: #1e2d3d;
-  --border-med: #253545;
-  --border-lit: #2e4258;
-  --blood-400: #d01829;
-  --blood-500: #b31420;
-  --ice: #e8f4ff;
-  --ice-muted: #9bb8d4;
-  --gold: #c9975a;
-  --font-display: 'Cormorant Garamond', serif;
-  --font-data: 'IBM Plex Mono', monospace;
-  --font-body: 'Instrument Sans', sans-serif;
+  --bg-void: #faf8f5;
+  --bg-deep: #f5f1eb;
+  --bg-panel: #ffffff;
+  --bg-surface: #f0ebe4;
+  --bg-raised: #e8e2d9;
+  --border-dim: #ebe4da;
+  --border-med: #dbd2c4;
+  --border-lit: #c9bfb0;
+  --blood-100: #fdf2f4;
+  --blood-200: #f9d4dc;
+  --blood-300: #e895a8;
+  --blood-400: #d4647a;
+  --blood-500: #c04d68;
+  --blood-600: #a83d56;
+  --blood-700: #8f3349;
+  --blood-800: #6b2838;
+  --blood-900: #fdf2f4;
+  --ice: #3d3530;
+  --ice-muted: #6b6259;
+  --ice-dim: #9a9188;
+  --gold: #c9956a;
+  --sage-100: #edf5f2;
+  --sage-400: #6b9e8f;
+  --sage-500: #5a8a7c;
+  --font-display: 'Fraunces', serif;
+  --font-data: 'Nunito', sans-serif;
+  --font-body: 'Nunito', sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -61,50 +91,68 @@ body {
 .font-data { font-family: var(--font-data); }
 .font-body { font-family: var(--font-body); }
 
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  14% { transform: scale(1.15); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.08); }
-  56% { transform: scale(1); }
+@keyframes gentle-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.92; }
 }
 
-@keyframes pulse-blood {
+@keyframes soft-glow {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
+  50% { opacity: 0.55; }
 }
 
-.animate-heartbeat { animation: heartbeat 1.8s ease-in-out infinite; }
-.animate-pulse-blood { animation: pulse-blood 2s ease-in-out infinite; }
+.animate-heartbeat { animation: gentle-pulse 2.4s ease-in-out infinite; }
+.animate-pulse-blood { animation: soft-glow 2.5s ease-in-out infinite; }
 
+.care-grid {
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(212, 100, 122, 0.08), transparent),
+    radial-gradient(circle at 85% 75%, rgba(107, 158, 143, 0.06), transparent 45%),
+    radial-gradient(circle at 10% 60%, rgba(201, 149, 106, 0.05), transparent 40%),
+    linear-gradient(180deg, var(--bg-void) 0%, #f7f4ef 50%, var(--bg-void) 100%);
+}
+
+.care-grid,
 .haem-grid {
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(208, 24, 41, 0.15), transparent),
-    radial-gradient(circle at 20% 80%, rgba(201, 151, 90, 0.06), transparent 40%),
-    linear-gradient(180deg, var(--bg-void) 0%, #0a0e14 50%, var(--bg-void) 100%);
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(212, 100, 122, 0.08), transparent),
+    radial-gradient(circle at 85% 75%, rgba(107, 158, 143, 0.06), transparent 45%),
+    radial-gradient(circle at 10% 60%, rgba(201, 149, 106, 0.05), transparent 40%),
+    linear-gradient(180deg, var(--bg-void) 0%, #f7f4ef 50%, var(--bg-void) 100%);
 }
 
+.care-pattern {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(212, 100, 122, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(107, 158, 143, 0.03) 0%, transparent 50%);
+}
+
+.care-pattern,
 .haem-pattern {
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(30, 45, 61, 0.35) 39px, rgba(30, 45, 61, 0.35) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(30, 45, 61, 0.35) 39px, rgba(30, 45, 61, 0.35) 40px);
+    radial-gradient(circle at 25% 25%, rgba(212, 100, 122, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(107, 158, 143, 0.03) 0%, transparent 50%);
 }
 
 .card-glow::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--blood-400), transparent);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blood-300), var(--sage-400), transparent);
+  border-radius: 2px 2px 0 0;
 }
 
 .card-glow {
-  box-shadow: 0 0 40px rgba(208, 24, 41, 0.08), 0 4px 24px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 1px 3px rgba(61, 53, 48, 0.04),
+    0 8px 32px rgba(212, 100, 122, 0.06),
+    0 2px 8px rgba(61, 53, 48, 0.03);
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-deep); }
-::-webkit-scrollbar-thumb { background: var(--border-lit); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #8b111b; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border-lit); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--blood-300); }
 
 input, textarea, select { font-family: var(--font-body); }

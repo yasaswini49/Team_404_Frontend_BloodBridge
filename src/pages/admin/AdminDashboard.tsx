@@ -70,15 +70,15 @@ export function AdminDashboard() {
               return (
                 <div key={status}>
                   <div className="flex justify-between mb-1">
-                    <span className="font-data text-[10px] uppercase tracking-wider text-ice-muted">{status}</span>
-                    <span className="font-data text-[10px] text-ice">{count}</span>
+                    <span className="font-body text-xs font-medium text-ice-muted capitalize">{status}</span>
+                    <span className="font-body text-xs text-ice">{count}</span>
                   </div>
                   <div className="h-2 rounded-full bg-bg-surface overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${pct}%` }}
                       transition={{ delay: i * 0.1, duration: 0.6, ease: 'easeOut' }}
-                      className="h-full rounded-full bg-gradient-to-r from-blood-600 to-blood-400"
+                      className="h-full rounded-full bg-gradient-to-r from-blood-400 to-blood-300"
                     />
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <div className="flex items-end gap-2 mb-4">
-              <span className="font-display text-6xl font-light text-blood-300">{completedRate}</span>
+              <span className="font-display text-6xl font-normal text-blood-500">{completedRate}</span>
               <span className="text-2xl text-ice-muted mb-2">%</span>
             </div>
             <p className="text-sm text-ice-muted mb-4">30-day completion rate across all requests</p>
@@ -105,7 +105,7 @@ export function AdminDashboard() {
               ].map(({ label, val }) => (
                 <div key={label} className="rounded-lg bg-bg-surface p-3 text-center border border-border-dim">
                   <p className="font-display text-2xl">{val}</p>
-                  <p className="font-data text-[9px] uppercase text-ice-dim">{label}</p>
+                  <p className="font-body text-xs text-ice-dim">{label}</p>
                 </div>
               ))}
             </div>
